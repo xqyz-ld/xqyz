@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志 - 星球宇宙</title>
+    <style>
+        /* 基本样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #eee;
+            background-color: #0a0a0a;
+            scroll-behavior: smooth;
+        }
+        
+        /* 全局动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        section {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* 头部导航栏样式 */
+        header {
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links li a {
+            color: #eee;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            color: #ff6b6b;
+            background-color: rgba(255, 107, 107, 0.1);
+        }
+        
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* 页面标题样式 */
+        .page-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 60px;
+            color: #ccc;
+        }
+        
+        /* 更新日志列表样式 */
+        .updates-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .update-entry {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .update-entry:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+        }
+        
+        .update-date {
+            color: #ff6b6b;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .update-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #eee;
+        }
+        
+        .update-content {
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .update-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .update-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #0a0a0a;
+            color: #ccc;
+            padding: 60px 0 30px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            flex-basis: 30%;
+        }
+        
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact {
+            flex-basis: 25%;
+        }
+        
+        .footer-contact h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #aaa;
+        }
+        
+        /* 响应式布局 */
+        @media screen and (max-width: 1024px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-logo,
+            .footer-contact {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 10px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .update-entry {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="b.png" alt="星球宇宙" class="logo-img">
+                <span class="logo-text">星球宇宙</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="features.html">游戏特色</a></li>
+                <li><a href="updates.html">更新日志</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="download.html">下载客户端</a></li>
+                <li><a href="recruit.html">招募</a></li>
+                <li><a href="https://docs.qq.com/aio/DWnRNcnpnTGhVYWxi" target="_blank">文档</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <section class="updates-section">
+        <div class="container">
+            <h1 class="page-title">星球宇宙 - 更新日志</h1>
+            <p class="page-subtitle">查看服务器的最新更新和版本信息</p>
+            
+            <div class="updates-list">
+                <!-- 更新条目1 -->
+                <div class="update-entry">
+                    <div class="update-date">2024-03-15</div>
+                    <h2 class="update-title">版本 1.25 更新</h2>
+                    <div class="update-content">
+                        <ul>
+                            <li>新增起床战争2.0版本，全新地图和平衡性调整</li>
+                            <li>优化生存服务器性能，提高TPS稳定性</li>
+                            <li>修复了部分已知bug，提升游戏体验</li>
+                            <li>增加游戏内活动系统，支持定期举办活动</li>
+                            <li>优化客户端加载速度</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 更新条目2 -->
+                <div class="update-entry">
+                    <div class="update-date">2024-03-01</div>
+                    <h2 class="update-title">服务器性能优化</h2>
+                    <div class="update-content">
+                        <ul>
+                            <li>升级服务器硬件配置，提升整体性能</li>
+                            <li>优化网络架构，减少延迟和卡顿</li>
+                            <li>添加新的安全措施，防止外挂和作弊行为</li>
+                            <li>更新反作弊系统，提供公平游戏环境</li>
+                            <li>优化数据库结构，提高查询效率</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 更新条目3 -->
+                <div class="update-entry">
+                    <div class="update-date">2024-02-15</div>
+                    <h2 class="update-title">新游戏模式上线</h2>
+                    <div class="update-content">
+                        <ul>
+                            <li>新增空岛战争3.0，支持更多玩家同时参与</li>
+                            <li>创造世界新增红石实验室区域</li>
+                            <li>增加游戏内活动系统，定期举办精彩活动</li>
+                            <li>新增迷你小游戏：TNT跑酷</li>
+                            <li>优化游戏内商店系统</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 更新条目4 -->
+                <div class="update-entry">
+                    <div class="update-date">2024-02-01</div>
+                    <h2 class="update-title">春节特别更新</h2>
+                    <div class="update-content">
+                        <ul>
+                            <li>春节特别活动：红包雨和限定皮肤</li>
+                            <li>主城区域装饰更新，增添节日氛围</li>
+                            <li>商城新增春节限定商品</li>
+                            <li>登录奖励活动开启</li>
+                            <li>春节专属地图上线</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container" style="padding: 20px;">
+            <div class="footer-contact" style="text-align: center; margin-bottom: 10px;">
+                <h3 style="margin-bottom: 10px;">联系我们</h3>
+                <p style="margin-bottom: 5px;">客服QQ: 368759470</p>
+            <p>官方群: <a href="https://qm.qq.com/q/96aZ3RTFQc" target="_blank" style="color: #ff6b6b; text-decoration: none;">加入官方群</a></p>
+            </div>
+            <div class="copyright" style="text-align: center; padding-top: 10px;">
+                <p>&copy; 2025 星球宇宙网络服 版权所有</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

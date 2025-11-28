@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 星球宇宙</title>
+    <style>
+        /* 基本样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #eee;
+            background-color: #0a0a0a;
+            scroll-behavior: smooth;
+        }
+        
+        /* 全局动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        section {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* 头部导航栏样式 */
+        header {
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links li a {
+            color: #eee;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            color: #ff6b6b;
+            background-color: rgba(255, 107, 107, 0.1);
+        }
+        
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* 页面标题样式 */
+        .page-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 60px;
+            color: #ccc;
+        }
+        
+        /* 关于我们内容样式 */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 60px;
+        }
+        
+        .about-content h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .about-content p {
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        /* 团队介绍样式 */
+        .team-section h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .team-member {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+        }
+        
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #2a2a2a;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b6b;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .member-name {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .member-role {
+            font-size: 16px;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+        
+        .member-description {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* 服务器统计样式 */
+        .stats-section {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .stats-section h2 {
+            color: #fff;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat {
+            background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .stat:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #ccc;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #0a0a0a;
+            color: #ccc;
+            padding: 60px 0 30px;
+            border-top: 1px solid #333;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            flex-basis: 30%;
+        }
+        
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact {
+            flex-basis: 25%;
+        }
+        
+        .footer-contact h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #aaa;
+        }
+        
+        /* 响应式布局 */
+        @media screen and (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-logo,
+            .footer-contact {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 10px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .about-content,
+            .stats-section {
+                padding: 25px;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="b.png" alt="星球宇宙" class="logo-img">
+                <span class="logo-text">星球宇宙</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="features.html">游戏特色</a></li>
+                <li><a href="updates.html">更新日志</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="download.html">下载客户端</a></li>
+                <li><a href="recruit.html">招募</a></li>
+                <li><a href="https://docs.qq.com/aio/DWnRNcnpnTGhVYWxi" target="_blank">文档</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <section class="about-section">
+        <div class="container">
+            <h1 class="page-title">关于我们</h1>
+            <p class="page-subtitle">了解星球宇宙服务器的发展历程和团队信息</p>
+            
+            <!-- 关于我们内容 -->
+            <div class="about-content">
+                <h2>服务器简介</h2>
+                <p>星球宇宙是一个专注于提供优质游戏体验的我的世界网络游戏服务器，成立于2020年。我们致力于为玩家打造一个公平、有趣、和谐的游戏环境。</p>
+                <p>自成立以来，我们不断更新和优化服务器内容，引入了各种有趣的游戏模式和特色玩法，包括起床战争、空岛战争、生存模式、创造模式等多种玩法，满足不同玩家的需求。</p>
+                <p>我们的团队由一群热爱Minecraft的玩家组成，大家各司其职，共同维护服务器的运营和发展。我们重视玩家的反馈，不断改进服务质量，力求为玩家提供最好的游戏体验。</p>
+                
+                <h2>我们的理念</h2>
+                <p>• <strong>公平公正</strong>：我们严格打击作弊行为，确保游戏环境的公平性。</p>
+                <p>• <strong>创新发展</strong>：我们不断更新和创新游戏内容，为玩家带来全新体验。</p>
+                <p>• <strong>玩家至上</strong>：我们重视玩家的需求和反馈，以玩家体验为中心。</p>
+                <p>• <strong>团队合作</strong>：我们鼓励玩家之间的合作和交流，营造和谐的社区氛围。</p>
+            </div>
+            
+            <!-- 团队介绍 -->
+            <div class="team-section">
+                <h2>我们的团队</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">腐竹</div>
+                        <h3 class="member-name">你好月球</h3>
+                        <p class="member-role">服务器创始人</p>
+                        <p class="member-description">热爱Minecraft，拥有丰富的服务器管理经验，负责服务器的整体运营和发展规划。</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">副腐竹</div>
+                        <h3 class="member-name">冷触摸联络</h3>
+                        <p class="member-role">服务器第二创始人</p>
+                        <p class="member-description">精通各种插件开发和服务器优化，负责服务器的技术维护和功能开发。</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">建筑</div>
+                        <h3 class="member-name">做梦的青铜灰鹦鹉</h3>
+                        <p class="member-role">建筑团队负责人</p>
+                        <p class="member-description">拥有出色的建筑才华，负责服务器地图和建筑的设计与建造。</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">客服</div>
+                        <h3 class="member-name">客服人员</h3>
+                        <p class="member-role">客服主管</p>
+                        <p class="member-description">热情友善，负责解答玩家问题，处理玩家反馈，维护社区和谐。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 服务器统计 -->
+            <div class="stats-section">
+                <h2>服务器数据</h2>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-number">10000+</div>
+                        <div class="stat-label">注册玩家</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">同时在线</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">游戏模式</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">基岩互通</div>
+                        <div class="stat-label">跨平台体验</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container" style="padding: 20px;">
+            <div class="footer-contact" style="text-align: center; margin-bottom: 10px;">
+                <h3 style="margin-bottom: 10px;">联系我们</h3>
+                <p style="margin-bottom: 5px;">客服QQ: 368759470</p>
+            <p>官方群: <a href="https://qm.qq.com/q/96aZ3RTFQc" target="_blank" style="color: #ff6b6b; text-decoration: none;">加入官方群</a></p>
+            </div>
+            <div class="copyright" style="text-align: center; padding-top: 10px;">
+                <p>&copy; 2025 星球宇宙网络服 版权所有</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

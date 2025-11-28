@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星球宇宙 - 我的世界网络游戏服务器</title>
+    <style>
+        /* 基本样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+
+        
+        body {
+        font-family: 'Microsoft YaHei', Arial, sans-serif;
+        line-height: 1.6;
+        color: #eee;
+        background-color: #0a0a0a;
+        scroll-behavior: smooth;
+    }
+        
+        /* 全局动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        section {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* 头部导航栏样式 */
+        header {
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 4px solid #ff6b6b;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #eee;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #eee;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b6b;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="b.png" alt="星球宇宙" class="logo-img">
+                <span class="logo-text">星球宇宙</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="features.html">游戏特色</a></li>
+                    <li><a href="updates.html">更新日志</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="download.html">下载客户端</a></li>
+                    <li><a href="recruit.html">招募</a></li>
+                    <li><a href="https://docs.qq.com/aio/DWnRNcnpnTGhVYWxi" target="_blank">文档</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>星球宇宙 - 我的世界网络游戏服务器</h1>
+                <div class="online-count">同时在线 30000+</div>
+                <p>最高同时在线3W+在线玩家多可以让你更快的找到好伙伴一起游戏，我们拥有完善的好友、组队、公会系统，让你的游戏体验更上一层楼!</p>
+                <div class="welcome-text">星球宇宙欢迎你</div>
+<div class="welcome-text">Welcome TO 星球宇宙</div>
+                <a href="download.html" class="join-btn">立即加入</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2>最新游戏更新</h2>
+            <p>我们定期更新游戏内容，为玩家带来全新体验和改进。查看最新的更新内容，了解服务器的发展动态。</p>
+            <p>关注更新，掌握星球宇宙的最新变化！</p>
+            
+            <div class="update-items">
+                <div class="update-item">
+                    <h3>2024-03-15 - 版本 1.25 更新</h3>
+                    <p>• 新增起床战争2.0版本，全新地图和平衡性调整</p>
+                    <p>• 优化生存服务器性能，提高TPS稳定性</p>
+                    <p>• 修复了部分已知bug，提升游戏体验</p>
+                </div>
+                <div class="update-item">
+                    <h3>2024-03-01 - 服务器性能优化</h3>
+                    <p>• 升级服务器硬件配置，提升整体性能</p>
+                    <p>• 优化网络架构，减少延迟和卡顿</p>
+                    <p>• 添加新的安全措施，防止外挂和作弊行为</p>
+                </div>
+                <div class="update-item">
+                    <h3>2024-02-15 - 新游戏模式上线</h3>
+                    <p>• 新增空岛战争3.0，支持更多玩家同时参与</p>
+                    <p>• 创造世界新增红石实验室区域</p>
+                    <p>• 增加游戏内活动系统，定期举办精彩活动</p>
+                </div>
+                <div class="update-item">
+                    <h3>2024-02-01 - 春节特别更新</h3>
+                    <p>• 春节特别活动：红包雨和限定皮肤</p>
+                    <p>• 主城区域装饰更新，增添节日氛围</p>
+                    <p>• 商城新增春节限定商品</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="updates" class="updates-section">
+        <div class="container">
+            <h2>持续的更新和维护</h2>
+            <p>星球宇宙目前保持着良好的更新频率，让所有冒险家们常玩常新。</p>
+            <p>工程师火速更新内容中......</p>
+            
+            <div class="update-items">
+                <div class="update-item">
+                    <h3>版本 1.25 更新</h3>
+                    <p>新增游戏模式和优化游戏体验</p>
+                </div>
+                <div class="update-item">
+                    <h3>服务器性能提升</h3>
+                    <p>优化服务器架构，提升游戏流畅度</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="padding: 20px;">
+            <div class="footer-contact" style="text-align: center; margin-bottom: 10px;">
+                <h3 style="margin-bottom: 10px;">联系我们</h3>
+                <p style="margin-bottom: 5px;">客服QQ: 368759470</p>
+            <p>官方群: <a href="https://qm.qq.com/q/96aZ3RTFQc" target="_blank" style="color: #ff6b6b; text-decoration: none;">加入官方群</a></p>
+            </div>
+            <div class="copyright" style="text-align: center; padding-top: 10px;">
+                <p>&copy; 2025 星球宇宙网络服 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* 英雄区域样式 */
+        .hero-section {
+            background: url('001.jpg') center/cover no-repeat fixed;
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            z-index: 1;
+        }
+        
+        .hero-container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .online-count {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        
+        .welcome-text {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .join-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+        
+        .join-btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 通用容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* 特性区域样式 */
+        .features-section {
+            background-color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .features-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #eee;
+        }
+        
+        .features-section p {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .game-modes {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        
+        .game-mode {
+            flex-basis: calc(25% - 20px);
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #1a1a1a;
+        }
+        
+        .game-mode:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+        }
+        
+        .game-mode img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .game-mode h3 {
+            padding: 15px;
+            background-color: #2a2a2a;
+            margin: 0;
+            font-size: 18px;
+            color: #eee;
+        }
+        
+        /* 更新区域样式 */
+        .updates-section {
+            background-color: #2a2a2a;
+            text-align: center;
+        }
+        
+        .updates-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #eee;
+        }
+        
+        .updates-section p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .update-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .update-item {
+            background-color: #1a1a1a;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            flex-basis: calc(50% - 40px);
+            max-width: 500px;
+        }
+        
+        .update-item h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .update-item p {
+            color: #ddd;
+            font-size: 16px;
+            max-width: 100%;
+        }
+        
+        .update-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+        }
+        
+        /* 关于区域样式 */
+        .about-section {
+            background-color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .about-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #eee;
+        }
+        
+        .about-section p {
+            font-size: 18px;
+            color: #eee;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .stat {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin: 0 50px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid #333;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 48px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            color: #ccc;
+        }
+        
+        .learn-more-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #4ecdc4;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .learn-more-btn:hover {
+            background-color: #45b7aa;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 下载区域样式 */
+        .download-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .download-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .download-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #4ecdc4;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .download-btn:hover {
+            background-color: #45b7aa;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #0a0a0a;
+            color: #ccc;
+            padding: 60px 0 30px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            flex-basis: 30%;
+        }
+        
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links,
+        .footer-contact {
+            flex-basis: 25%;
+        }
+        
+        .footer-links h3,
+        .footer-contact h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #aaa;
+        }
+        
+        /* 响应式布局 - 平板设备 */
+        @media screen and (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .online-count {
+                font-size: 28px;
+            }
+            
+            .game-mode {
+                flex-basis: calc(50% - 20px);
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-logo,
+            .footer-links,
+            .footer-contact {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        /* 响应式布局 - 手机设备 */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 10px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero-section {
+                padding: 80px 0 60px;
+            }
+            
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            
+            .online-count {
+                font-size: 24px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            
+            .welcome-text {
+                font-size: 20px;
+            }
+            
+            .join-btn,
+            .download-btn {
+                padding: 12px 30px;
+                font-size: 18px;
+            }
+            
+            .container {
+                padding: 40px 15px;
+            }
+            
+            .features-section h2,
+            .updates-section h2,
+            .about-section h2,
+            .download-section h2 {
+                font-size: 28px;
+            }
+            
+            .game-mode {
+                flex-basis: 100%;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            .stat {
+                margin: 20px 0;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .footer-content {
+                padding: 0 20px;
+            }
+        }
+    </style>
+    
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>强制刷新和清除缓存指南</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .method {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .note {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML预览未更新？强制刷新和清除缓存指南</h1>
+    
+    <div class="note">
+        <strong>问题分析：</strong>从服务器日志中发现浏览器返回了304状态码，这表明浏览器正在使用缓存的页面版本，而不是加载您修改后的新版本。
+    </div>
+
+    <h2>1. 强制刷新方法</h2>
+    
+    <div class="method">
+        <h3>Windows系统</h3>
+        <ul>
+            <li>Chrome/Firefox/Edge: <code>Ctrl + F5</code></li>
+            <li>IE浏览器: <code>Ctrl + R</code> 或 <code>F5</code></li>
+            <li>或使用菜单：右键点击刷新按钮 → 选择"强制刷新"或"清空缓存并硬性重新加载"</li>
+        </ul>
+    </div>
+
+    <div class="method">
+        <h3>Mac系统</h3>
+        <ul>
+            <li>Chrome/Firefox: <code>Command + Shift + R</code></li>
+            <li>Safari: <code>Command + Option + R</code></li>
+        </ul>
+    </div>
+
+    <h2>2. 清除浏览器缓存</h2>
+    
+    <div class="method">
+        <h3>Chrome浏览器</h3>
+        <ol>
+            <li>按 <code>Ctrl + Shift + Delete</code> (Windows) 或 <code>Command + Shift + Delete</code> (Mac)</li>
+            <li>在时间范围下拉菜单中选择"全部时间"</li>
+            <li>确保勾选了"缓存的图片和文件"</li>
+            <li>点击"清除数据"</li>
+        </ol>
+    </div>
+
+    <div class="method">
+        <h3>Firefox浏览器</h3>
+        <ol>
+            <li>按 <code>Ctrl + Shift + Delete</code> (Windows) 或 <code>Command + Shift + Delete</code> (Mac)</li>
+            <li>在时间范围下拉菜单中选择"全部"</li>
+            <li>确保勾选了"缓存"</li>
+            <li>点击"立即清除"</li>
+        </ol>
+    </div>
+
+    <h2>3. 开发环境优化建议</h2>
+    
+    <div class="method">
+        <h3>添加meta标签</h3>
+        <p>在您的HTML文件头部添加以下meta标签，告诉浏览器不要缓存页面：</p>
+        <pre>
+&lt;meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"&gt;
+&lt;meta http-equiv="Pragma" content="no-cache"&gt;
+&lt;meta http-equiv="Expires" content="0"&gt;</pre>
+    </div>
+
+    <div class="method">
+        <h3>禁用浏览器缓存（开发模式）</h3>
+        <ol>
+            <li>按 <code>F12</code> 打开开发者工具</li>
+            <li>切换到"网络"或"Network"选项卡</li>
+            <li>勾选"禁用缓存"或"Disable cache"选项</li>
+            <li>保持开发者工具打开，浏览器将不再缓存页面</li>
+        </ol>
+    </div>
+
+    <h2>4. 服务器端设置</h2>
+    
+    <p>您也可以考虑停止当前运行的服务器，然后重新启动它来确保没有缓存问题：</p>
+    
+    <pre>
+# 在命令行中
+# 1. 先停止当前服务器（如果知道进程ID）
+# 2. 然后重新启动服务器</pre>
+
+    <div class="note">
+        <strong>注意：</strong>所有HTML文件都已成功保存（最后修改时间为今天1:00左右），所以问题确实是由浏览器缓存引起的。请尝试上述方法，特别是强制刷新（Ctrl+F5）应该能立即解决问题。
+    </div>
+</body>
+</html>

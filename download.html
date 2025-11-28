@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载客户端 - 星球宇宙</title>
+    <style>
+        /* 基本样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #eee;
+            background-color: #0a0a0a;
+            scroll-behavior: smooth;
+        }
+        
+        /* 全局动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        section {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* 头部导航栏样式 */
+        header {
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links li a {
+            color: #eee;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links li a:hover {
+            color: #ff6b6b;
+            background-color: rgba(255, 107, 107, 0.1);
+        }
+        
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* 页面标题样式 */
+        .page-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 60px;
+            color: #ccc;
+        }
+        
+        /* 下载部分样式 */
+        .download-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .mc-icon {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .download-info {
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+        
+        .download-info h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .download-info p {
+            font-size: 16px;
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.5);
+        }
+        
+        /* 系统要求样式 */
+        .system-requirements {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .system-requirements h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .requirements-column h3 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .requirements-column ul {
+            list-style: none;
+        }
+        
+        .requirements-column li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #ccc;
+        }
+        
+        .requirements-column li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        /* 安装教程样式 */
+        .installation-guide {
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+        
+        .installation-guide h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .guide-steps {
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .step-content {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-left: 45px;
+        }
+        
+        /* 常见问题样式 */
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-section h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .faq-item {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #252525;
+        }
+        
+        .faq-question h3 {
+            color: #fff;
+            font-size: 18px;
+        }
+        
+        .faq-toggle {
+            color: #ff6b6b;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: #ccc;
+            line-height: 1.8;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #0a0a0a;
+            color: #ccc;
+            padding: 60px 0 30px;
+            border-top: 1px solid #333;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            flex-basis: 30%;
+        }
+        
+        .footer-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact {
+            flex-basis: 25%;
+        }
+        
+        .footer-contact h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            color: #aaa;
+        }
+        
+        /* 响应式布局 */
+        @media screen and (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 10px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .mc-icon {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .download-btn {
+                font-size: 20px;
+                padding: 12px 30px;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .system-requirements,
+            .guide-steps {
+                padding: 25px;
+            }
+            
+            .step-content {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .step-title {
+                display: flex;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-logo,
+            .footer-contact {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="b.png" alt="星球宇宙" class="logo-img">
+                <span class="logo-text">星球宇宙</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="features.html">游戏特色</a></li>
+                <li><a href="updates.html">更新日志</a></li>
+                <li><a href="about.html">关于我们</a></li>
+                <li><a href="download.html">下载客户端</a></li>
+                <li><a href="recruit.html">招募</a></li>
+                <li><a href="https://docs.qq.com/aio/DWnRNcnpnTGhVYWxi" target="_blank">文档</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <section class="download-section">
+        <div class="container">
+            <h1 class="page-title">下载客户端</h1>
+            <p class="page-subtitle">获取星球宇宙专属客户端，体验更加便捷的游戏服务</p>
+            
+            <img src="b.png" alt="Minecraft 图标" class="mc-icon">
+            
+            <div class="download-info">
+                <h2>网易我的世界客户端</h2>
+                <p>星球宇宙服务器是在网易中国版我的世界平台上开发的网络游戏服务器，您需要下载并安装网易我的世界客户端才能进入游戏。</p>
+                <p>游戏内的内容由我们团队独立开发制作，但游戏平台基于网易中国版我的世界。</p>
+            </div>
+            
+            <a href="https://a50.gdl.netease.com/7396477174628225024/MC_setup.exe?key1=d3bc5a89f970c8b643c34cb96ac2e7c0&key2=692986df" target="_blank" class="download-btn">立即下载客户端</a>
+            
+            <!-- 系统要求 -->
+            <div class="system-requirements">
+                <h2>系统要求</h2>
+                <div class="requirements-grid">
+                    <div class="requirements-column">
+                        <h3>最低配置</h3>
+                        <ul>
+                            <li>操作系统：Windows 10 64位</li>
+                            <li>处理器：Intel Core i3 或同等性能处理器</li>
+                            <li>内存：4GB RAM</li>
+                            <li>显卡：Intel HD Graphics 4000 或同等性能显卡</li>
+                            <li>存储空间：至少2GB可用空间</li>
+                            <li>网络：宽带互联网连接</li>
+                        </ul>
+                    </div>
+                    <div class="requirements-column">
+                        <h3>推荐配置</h3>
+                        <ul>
+                            <li>操作系统：Windows 10/11 64位</li>
+                            <li>处理器：Intel Core i5 或同等性能处理器</li>
+                            <li>内存：8GB RAM 或更高</li>
+                            <li>显卡：NVIDIA GeForce GTX 1050 或同等性能显卡</li>
+                            <li>存储空间：至少5GB可用空间</li>
+                            <li>网络：稳定的宽带互联网连接</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 安装教程 -->
+            <div class="installation-guide">
+                <h2>安装教程</h2>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            下载网易我的世界客户端
+                        </div>
+                        <div class="step-content">
+                            点击上方的"立即下载客户端"按钮，下载网易发烧游戏客户端。
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            安装客户端
+                        </div>
+                        <div class="step-content">
+                            下载完成后，运行安装程序并按照提示完成安装。
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            注册/登录账户
+                        </div>
+                        <div class="step-content">
+                            安装完成后，启动网易我的世界客户端，注册或登录您的网易账户。
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">4</span>
+                            开始游戏
+                        </div>
+                        <div class="step-content">
+                            登录成功后，点击"开始游戏"按钮进入游戏界面。
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-title">
+                            <span class="step-number">5</span>
+                            加入服务器
+                        </div>
+                        <div class="step-content">
+                            在服务器列表中找到"星球宇宙"服务器，点击加入即可开始您的游戏之旅！
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 常见问题 -->
+            <div class="faq-section">
+                <h2>常见问题</h2>
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h3>是否需要Minecraft正版账号才能游玩？</h3>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        您需要拥有网易我的世界的账号才能游玩，建议使用网易正版账号登录以获得最佳游戏体验。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>客户端安装后出现错误怎么办？</h3>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        如遇到安装错误，是要联系中国版我的世界客服。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>是否可以使用其他第三方启动器？</h3>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        下载里是否可用其他的启动器游玩是不可以的。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>客户端会自动更新吗？</h3>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        是的，我们的专属客户端支持自动更新功能，当有新版本发布时，客户端会自动检测并提示更新。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container" style="padding: 20px;">
+            <div class="footer-contact" style="text-align: center; margin-bottom: 10px;">
+                <h3 style="margin-bottom: 10px;">联系我们</h3>
+                <p style="margin-bottom: 5px;">客服QQ: 368759470</p>
+            <p>官方群: <a href="https://qm.qq.com/q/96aZ3RTFQc" target="_blank" style="color: #ff6b6b; text-decoration: none;">加入官方群</a></p>
+            </div>
+            <div class="copyright" style="text-align: center; padding-top: 10px;">
+                <p>&copy; 2025 星球宇宙网络服 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 常见问题折叠脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
